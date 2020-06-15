@@ -12,7 +12,7 @@ namespace shift_register
             Console.WriteLine("Hello World!");
 
             var controller = new GpioController();
-            var sr = new Sn74hc595(Sn74hc595.PinMapping.Standard, controller,true,2);
+            var sr = new Sn74hc595(Sn74hc595.PinMapping.Standard, controller,true);
 
             var cancellationSource = new CancellationTokenSource();
             Console.CancelKeyPress += (s, e) =>

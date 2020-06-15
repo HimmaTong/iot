@@ -125,26 +125,23 @@ namespace Iot.Device.ShiftRegister
             {
                 _controller.OpenPinAndWrite(_mapping.OE, 0);
             }
-
-            if (_mapping.QOUT > 0)
-            {
-                _controller.OpenPinAndWrite(_mapping.QOUT, 0);
-            }
         }
 
         public struct PinMapping
         {
-            public PinMapping(int ser, int oe, int rclk, int srclk, int srclr, int qout)
+            // 5 pins
+
+            public PinMapping(int ser, int oe, int rclk, int srclk, int srclr)
             {
                 SER = ser;
                 RCLK = rclk;
                 SRCLK = srclk;
                 SRCLR = srclr;
                 OE = oe;
-                QOUT = qout;    
             }
 
-            public static PinMapping Standard => new PinMapping(14,13,12,11,10,0);
+            public static PinMapping Standard => new PinMapping(25,12,16,20,21);
+            public static PinMapping Matching => new PinMapping(14,13,12,11,10);
 
             /*
                 Mapping
@@ -161,7 +158,6 @@ namespace Iot.Device.ShiftRegister
             public int RCLK {get; set;}
             public int SRCLK {get; set;}
             public int SRCLR {get; set;}
-            public int QOUT {get; set;}
 
             public bool Validate()
             {
